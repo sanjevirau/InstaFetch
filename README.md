@@ -5,8 +5,6 @@ Website : http://sanjevirau.com/
 
 Version : 1.0
 
-==============================
-
 Description
 -------------
 InstaFetch is a Python script that uses Webstagram to automatically download all the photo and video
@@ -28,8 +26,7 @@ Usage
 -------------
 
 	instafetch.py [username]
-
-==============================
+	
 Warning
 -------------
 Before you use InstaFetch, make sure you obtain permission from the Instagram user to download their posts.
