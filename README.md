@@ -1,7 +1,8 @@
 # InstaFetch
-
 Creator : Sanjevi Rau
-Website : http://www.sanjevirau.com
+
+Website : http://sanjevirau.com/
+
 Version : 1.0
 
 ==============================
