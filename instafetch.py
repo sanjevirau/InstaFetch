@@ -83,7 +83,7 @@ def no_posts():
     global posts
     while True:
         try:
-            posts = source_name.string
+            posts = source_name.string.replace(",", "")
             prof_type = "Public"
             break
         except AttributeError:
