@@ -37,6 +37,7 @@ import subprocess
 import sys
 import time
 from bs4 import BeautifulSoup
+from retrying import retry
 
 global count
 count = 0
@@ -90,6 +91,9 @@ def no_posts():
             prof_type = "Private"
             break
 
+@retry(stop_max_attempt_number=7)
+def download(url, file):
+    urllib.request.urlretrieve(url, file)
 
 # Function to download posts
 def fetcher_photo(url):
@@ -107,7 +111,10 @@ def fetcher_photo(url):
     for photo in bs4.findAll('a', {"class": "cb_ajax"}):
         det = photo.get('href')
         fullname = username + "_" + str(count) + ".jpg"
-        urllib.request.urlretrieve(det, dl_path + "/" + fullname)
+        try:
+            download(det, dl_path + "/" + fullname)
+        except: # catch *all* exceptions
+            print(sys.exc_info()[0])
     for video in bs4.findAll('div', {"class": "jp-jplayer"}):
         det = video.get('data-m4v')
         fullname = username + "_" + str(count) + ".mp4"
